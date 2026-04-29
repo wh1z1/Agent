@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 选品官 — 智能电商 Agent 系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">🤖</span>
+            <h1>AI 选品官</h1>
+            <span class="version">v1.0</span>
+        </div>
+        <div class="header-right">
+            <div class="status-dot" id="systemStatus"></div>
+            <span id="statusText">就绪</span>
+        </div>
+    </header>
+
+    <!-- 主控制台 -->
+    <main class="main">
+        <!-- 控制面板 -->
+        <section class="control-panel">
+            <div class="panel-card">
+                <h3>⚡ 一键启动</h3>
+                <p>自动执行：趋势分析 → 供应链匹配 → 内容生成 → 多平台上架 → 数据监控</p>
+                <div class="controls">
+                    <label>
+                        选品数量：
+                        <select id="topN">
+                            <option value="3" selected>3 个</option>
+                            <option value="5">5 个</option>
+                            <option value="8">8 个</option>
+                        </select>
+                    </label>
+                    <button class="btn-primary" id="btnRun" onclick="runPipeline()">
+                        🚀 开始执行
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 流水线进度 -->
+        <section class="pipeline-section" id="pipelineSection" style="display:none;">
+            <h2>📋 流水线进度</h2>
+            <div class="pipeline-steps">
+                <div class="step" id="step1">
+                    <div class="step-icon">🔍</div>
+                    <div class="step-label">趋势猎手</div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step" id="step2">
+                    <div class="step-icon">🏭</div>
+                    <div class="step-label">供应链</div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step" id="step3">
+                    <div class="step-icon">✍️</div>
+                    <div class="step-label">内容工厂</div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step" id="step4">
+                    <div class="step-icon">🚀</div>
+                    <div class="step-label">上架运营</div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step" id="step5">
+                    <div class="step-icon">📊</div>
+                    <div class="step-label">数据驾驶舱</div>
+                </div>
+            </div>
+
+            <!-- 实时日志 -->
+            <div class="log-panel">
+                <div class="log-header">
+                    <span>📜 实时日志</span>
+                    <span class="log-count" id="logCount">0 条</span>
+                </div>
+                <div class="log-body" id="logBody"></div>
+            </div>
+        </section>
+
+        <!-- 结果展示区 -->
+        <section class="results-section" id="resultsSection" style="display:none;">
+
+            <!-- Tab 导航 -->
+            <div class="tabs">
+                <button class="tab active" data-tab="trends" onclick="switchTab('trends')">
+                    🔍 趋势选品
+                </button>
+                <button class="tab" data-tab="supply" onclick="switchTab('supply')">
+                    🏭 供应链
+                </button>
+                <button class="tab" data-tab="content" onclick="switchTab('content')">
+                    ✍️ 内容素材
+                </button>
+                <button class="tab" data-tab="listings" onclick="switchTab('listings')">
+                    🚀 上架信息
+                </button>
+                <button class="tab" data-tab="dashboard" onclick="switchTab('dashboard')">
+                    📊 数据面板
+                </button>
+                <button class="tab" data-tab="report" onclick="switchTab('report')">
+                    📋 运营报告
+                </button>
+            </div>
+
+            <!-- Tab 内容 -->
+            <div class="tab-content" id="tabContent"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>AI 选品官 — 由 5 个 AI Agent 驱动 | 趋势猎手 · 供应链 · 内容工厂 · 上架运营 · 数据驾驶舱</p>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
